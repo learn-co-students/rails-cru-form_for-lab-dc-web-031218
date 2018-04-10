@@ -1,0 +1,17 @@
+<%= form_for(@song) do |f| %>
+<%= f.label :name, "My song name" %>
+<%= f.text_field :name %><br>
+<h3>ARTISTS</h3>
+<%= f.collection_radio_buttons :artist_id, Artist.all, :id, :name, {},{id: 'song[artist_id]'}  do |b|
+  b.label(style: 'margin-right:50px;white-space:nowrap; display:inline-block;') { b.label + ": "+ b.radio_button}
+ end  %>
+
+<br>
+<h3>GENRES</h3>
+<%= f.collection_radio_buttons :genre_id, Genre.all, :id, :name, {},{id: 'song[genre_id]'}  do |b|
+  b.label(style: 'margin-right:50px;white-space:nowrap; display:inline-block;') { b.label + ": "+ b.radio_button}
+ end  %>
+
+<br>
+<%= f.submit %>
+<%end %>
